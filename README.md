@@ -5,3 +5,12 @@ the idea of this application is a poc of one-to-one chat using openAI https://be
 you should be able to add a initial chat text, then the conversation is autocompleted.
 
 you must add your own api key.
+
+`properties.json`
+
+```json
+  {
+      "api_key": "YOUR_API_KEY", //put your api key here
+      "initial_text" : "You: What have you been up to?\nFriend: Watching old movies.\nYou: Did you watch anything interesting?\nFriend:" // initial chat status 
+  }
+```
