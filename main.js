@@ -1,8 +1,9 @@
 const axios = require("axios")
-const initialText = "You: What have you been up to?\nFriend: Watching old movies.\nYou: Did you watch anything interesting?\nFriend:";
-const apikey = ""
+const properties = require("./properties.json")
+const initialText = properties.initial_text
+const apikey = properties.api_key
 
- function Chat(apikey, initialText) {
+function Chat(apikey, initialText) {
     let text = initialText
     let response = {}
     let name = ""
