@@ -2,6 +2,7 @@ const axios = require("axios")
 const properties = require("./properties.json")
 const initialText = properties.initial_text
 const apikey = properties.api_key
+const chatLength = properties.chat_length
 
 function Chat(apikey, initialText) {
     let text = initialText
@@ -10,31 +11,13 @@ function Chat(apikey, initialText) {
  
     async function execute(times){
         print(text)
-        //for(i = 0; i < times; i++){
-         //   name = i%2? "Friend": "You"
-        response = await callAPI("You", text)
-        text = text.concat(response.data.choices[0].text);
-        print(response.data.choices[0].text)
-        //}
-        response = await callAPI("Friend", text)
-        text = text.concat(response.data.choices[0].text);
-        print(response.data.choices[0].text)
-
-        response = await callAPI("You", text)
-        text = text.concat(response.data.choices[0].text);
-        print(response.data.choices[0].text)
-        
-        response = await callAPI("Friend", text)
-        text = text.concat(response.data.choices[0].text);
-        print(response.data.choices[0].text)
-
-        response = await callAPI("You", text)
-        text = text.concat(response.data.choices[0].text);
-        print(response.data.choices[0].text)
-
-        response = await callAPI("Friend", text)
-        text = text.concat(response.data.choices[0].text);
-        print(response.data.choices[0].text)
+        for(i = 0; i < times; i++){
+            name = i%2? "Friend": "You"
+            response = await callAPI(name, text)
+            text = text.concat(response.data.choices[0].text);
+            print(response.data.choices[0].text)
+            await delay(1000)
+        }
     }
 
     function print(text){
@@ -60,10 +43,16 @@ function Chat(apikey, initialText) {
             })
     }
 
+    function delay(ms) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, ms); //this can be dangerous, cant understand if populates a lot of setTimeouts
+        });
+      }
+
     return {
         execute: execute   
     }
 }
 
 const chat = Chat(apikey, initialText)
-chat.execute(2)
+chat.execute(chatLength)

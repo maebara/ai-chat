@@ -1,4 +1,5 @@
 {
     "api_key": "YOUR_API_KEY",
-    "initial_text" : "You: What have you been up to?\nFriend: Watching old movies.\nYou: Did you watch anything interesting?\nFriend:" 
+    "initial_text" : "You: What have you been up to?\nFriend: Watching old movies.\nYou: Did you watch anything interesting?\nFriend:",
+    "chat_length": 10
 }
